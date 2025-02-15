@@ -4,14 +4,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { cn } from '@/lib/utils'
 
-// We'll need to add actual animation JSON files later
-const animations = {
-  idle: '/animations/rant-rex-idle.json',
-  listening: '/animations/rant-rex-listening.json',
-  generating: '/animations/rant-rex-generating.json',
-  error: '/animations/rant-rex-error.json',
-}
-
 type RantRexState = 'idle' | 'listening' | 'generating' | 'error'
 
 interface RantRexProps {

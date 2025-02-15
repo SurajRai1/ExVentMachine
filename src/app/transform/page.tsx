@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Lottie from 'lottie-react'
 import { ArrowLeft, Share2, Sparkles, Download } from 'lucide-react'
@@ -280,13 +280,7 @@ export default function TransformPage() {
       {/* Animated Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#8A2BE2_0%,_transparent_50%)] opacity-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_#FF69B4_0%,_transparent_35%)] opacity-20" />
-      <Suspense fallback={
-        <div className="flex min-h-screen items-center justify-center">
-          <Loading text="Loading..." />
-        </div>
-      }>
-        <TransformContent />
-      </Suspense>
+      <TransformContent />
     </main>
   );
 }

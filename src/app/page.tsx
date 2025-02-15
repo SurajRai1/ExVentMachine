@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 import Lottie from 'lottie-react'
-import { Button } from '@/components/ui/button'
 import sassyRaccoon from '../../public/animations/Sassy-Raccoon-original.json'
 
 export default function Home() {
