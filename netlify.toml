@@ -1,10 +1,12 @@
 [build]
 command = "npm run build"
 publish = ".next"
+node_version = "18"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
 
 [build.environment]
 NEXT_USE_NETLIFY_EDGE = "true"
-NEXT_FORCE_EDGE_IMAGES = "true" 
+NEXT_FORCE_EDGE_IMAGES = "true"
+NEXT_TELEMETRY_DISABLED = "1" 
