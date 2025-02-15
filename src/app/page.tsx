@@ -1,101 +1,75 @@
-import Image from "next/image";
+'use client'
+
+import { useRouter } from 'next/navigation'
+import Lottie from 'lottie-react'
+import { Button } from '@/components/ui/button'
+import sassyRaccoon from '../../public/animations/Sassy-Raccoon-original.json'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter()
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <main className="min-h-screen bg-[#13111C] text-white overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#8A2BE2_0%,_transparent_50%)] opacity-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_#FF69B4_0%,_transparent_35%)] opacity-20" />
+      
+      <div className="flex min-h-screen flex-col items-center justify-center p-8">
+        <div className="max-w-5xl w-full space-y-12 text-center">
+          <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Turn Your Breakup Rant Into Art
+          </h1>
+          
+          <p className="text-xl text-gray-400/80 max-w-2xl mx-auto">
+            Let our sassy AI raccoon transform your heartbreak into a bop, 
+            a meme, or a Shakespearean tragedy.
+          </p>
+
+          <div className="relative w-64 h-64 mx-auto">
+            <Lottie 
+              animationData={sassyRaccoon}
+              loop={true}
+              className="transition-all duration-500 hover:scale-110"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          <div className="space-y-4 relative z-10">
+            <a 
+              href="/vent"
+              className="inline-block px-8 py-4 text-lg font-medium text-white rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all cursor-pointer relative z-10"
+            >
+              Start Venting →
+            </a>
+            
+            <p className="text-sm text-gray-400/80">
+              100% Free • No Sign-up Required
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-left max-w-3xl mx-auto">
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white">🎵 Breakup Songs</h3>
+              <p className="text-sm text-gray-400/80">
+                Turn your rant into a catchy tune in any genre
+              </p>
+            </div>
+            
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white">🎭 Shakespeare Mode</h3>
+              <p className="text-sm text-gray-400/80">
+                Get your revenge in elegant Old English
+              </p>
+            </div>
+            
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white">😂 Meme Generator</h3>
+              <p className="text-sm text-gray-400/80">
+                Create shareable memes from your story
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+    </main>
+  )
 }
