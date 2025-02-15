@@ -69,9 +69,9 @@ const MEME_TEMPLATES = [
 ]
 
 // Helper function to pick template based on text content
-function pickTemplate(text: string, previousTemplate?: string, forceDifferent: boolean = false): string {
+function pickTemplate(text: string, previousTemplate?: string): string {
   // Always exclude the previous template when generating a new meme
-  let availableTemplates = previousTemplate 
+  const availableTemplates = previousTemplate 
     ? MEME_TEMPLATES.filter(t => t !== previousTemplate)
     : MEME_TEMPLATES;
 
@@ -102,7 +102,7 @@ function pickTemplate(text: string, previousTemplate?: string, forceDifferent: b
 
   // If no matches or all filtered out, use random templates (excluding previous)
   if (matchedTemplates.length === 0) {
-    matchedTemplates = availableTemplates;
+    matchedTemplates = [...availableTemplates];
   }
 
   // Ensure we have at least one template
@@ -312,7 +312,7 @@ export async function POST(request: Request) {
           const bottomText = formatText(memeText.bottom)
           
           // Force a different template when generating a new meme
-          const template = pickTemplate(text, previousTemplate, forceNewTemplate)
+          const template = pickTemplate(text, previousTemplate)
           console.log('Selected template:', template, 'Previous:', previousTemplate, 'Force new:', forceNewTemplate)
 
           try {
@@ -325,7 +325,7 @@ export async function POST(request: Request) {
             // Verify we're not using the same template
             if (usedTemplate === previousTemplate) {
               console.log('Same template detected, trying again with forced different template');
-              const newTemplate = pickTemplate(text, usedTemplate, true);
+              const newTemplate = pickTemplate(text, usedTemplate);
               const newMemeUrl = await generateMemeUrl(newTemplate, topText, bottomText);
               const finalTemplate = newMemeUrl.split('/')[4].split('.')[0];
               
